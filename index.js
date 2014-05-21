@@ -1,13 +1,13 @@
 'use strict';
 
-var fs = require('fs');
 var _ = require('lodash');
+var q = require('q');
+var fs = require('fs');
 var glob = require('glob');
+var shell = require('shelljs/global');
 var async = require('async');
 var cacheSwap = require('cache-swap');
 var crypto = require('crypto');
-var shell = require('shelljs/global');
-var q = require('q');
 
 var SWAP_CATEGORY = "linted";
 
