@@ -1,11 +1,11 @@
 'use strict';
 
-var _ = require('lodash');
 var q = require('q');
-var glob = require('glob');
 var shell = require('shelljs/global');
 var async = require('async');
+
 var cache = require('./lib/cache');
+var processPatterns = require('./lib/process');
 
 var stdout = false;
 
@@ -30,32 +30,6 @@ var linter = function (file, cb) {
       cache.put(hash, output, cb);
     });
   });
-};
-
-var processPatterns = function (patterns) {
-  var result = [];
-
-  if (_.isString(patterns)) {
-    patterns = [patterns];
-  }
-
-  _.each(patterns, function (pattern) {
-    var exclusion = pattern.indexOf('!') === 0;
-
-    if (exclusion) {
-      pattern = pattern.slice(1);
-    }
-
-    var matches = glob.sync(pattern);
-
-    if (exclusion) {
-      result = _.difference(result, matches);
-    } else {
-      result = _.union(result, matches);
-    }
-  });
-
-  return result;
 };
 
 module.exports = function (patterns, options) {
