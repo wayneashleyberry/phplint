@@ -8,6 +8,9 @@
     "email": "wayneashleyberry@gmail.com",
     "url": "https://github.com/wayneashleyberry"
   },
+  "bugs": {
+    "url": "https://github.com/wayneashleyberry/node-phplint/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:wayneashleyberry/node-phplint.git"
