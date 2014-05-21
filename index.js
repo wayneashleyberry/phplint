@@ -9,7 +9,7 @@ var async = require('async');
 var cacheSwap = require('cache-swap');
 var crypto = require('crypto');
 
-var SWAP_CATEGORY = "linted";
+var SWAP_CATEGORY = 'linted';
 
 var swap = new cacheSwap({
   tmpDir: require('os').tmpDir(),
@@ -20,8 +20,8 @@ var checkCached = function(filePath, cb) {
   fs.readFile(filePath, function(err, contents) {
     if (err) return cb(err);
 
-    var sha1 = crypto.createHash("sha1"),
-    fileHash = sha1.update(contents.toString()).digest("hex");
+    var sha1 = crypto.createHash('sha1'),
+    fileHash = sha1.update(contents.toString()).digest('hex');
 
     swap.hasCached(SWAP_CATEGORY, fileHash, function(isCached, cachedPath) {
       cb(null, isCached, fileHash);
@@ -36,12 +36,11 @@ var linter = function (file, cb) {
     if (isCached) return cb();
 
     exec('php -l '+file, {silent: true}, function (code, output) {
-
       var err = (code === 0) ? null : output.trim();
 
       if (err) return cb(err);
 
-      swap.addCached(SWAP_CATEGORY, hash, "", function(err) {
+      swap.addCached(SWAP_CATEGORY, hash, '', function (err) {
         if (err) return cb(err);
         cb();
       });
