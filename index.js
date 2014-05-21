@@ -1,23 +1,23 @@
+'use strict';
+
 var fs = require('fs');
 var _ = require('lodash');
 var glob = require('glob');
 var async = require('async');
-var CacheSwap = require('cache-swap');
+var cacheSwap = require('cache-swap');
 var crypto = require('crypto');
 var shell = require('shelljs/global');
 
 var SWAP_CATEGORY = "linted";
 
-var swap = new CacheSwap({
+var swap = new cacheSwap({
   tmpDir: require('os').tmpDir(),
-  cacheDirName: 'gulp-phplint'
+  cacheDirName: 'node-phplint'
 });
 
 var checkCached = function(filePath, done) {
   fs.readFile(filePath, function(err, contents) {
-    if(err) {
-      return done(err);
-    }
+    if (err) return done(err);
 
     var sha1 = crypto.createHash("sha1"),
     fileHash = sha1.update(contents.toString()).digest("hex");
@@ -32,11 +32,12 @@ var linter = function (file, cb) {
   checkCached(file, function(err, isCached, hash) {
     if (err) return cb(err);
 
-    if (isCached) {
-      return cb();
-    }
+    process.stdout.write('.');
+
+    if (isCached) return cb();
 
     exec('php -l '+file, {silent: true}, function (code, output) {
+
       var err = (code === 0) ? null : output.trim();
 
       if (err) return cb(err);
