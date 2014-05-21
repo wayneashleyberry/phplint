@@ -5,7 +5,7 @@ var q = require('q');
 var glob = require('glob');
 var shell = require('shelljs/global');
 var async = require('async');
-var cache = require('./cache');
+var cache = require('./lib/cache');
 
 var stdout = false;
 
