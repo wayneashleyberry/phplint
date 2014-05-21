@@ -1,6 +1,6 @@
 {
   "name": "phplint",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "wrapper for php -l",
   "main": "index.js",
   "author": {
