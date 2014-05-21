@@ -13,12 +13,14 @@ var linter = function (file, cb) {
   cache.has(file, function(err, isCached, hash) {
     if (err) return cb(err);
 
-    if (isCached) {
-      if (stdout) {
-        cache.get(hash, function (err, cached) {
-          process.stdout.write(cached.contents);
-        });
-      }
+    if (isCached && stdout) {
+      return cache.get(hash, function (err, cached) {
+        process.stdout.write(cached.contents);
+        cb();
+      });
+    }
+
+    if (isCached && ! stdout) {
       return cb();
     }
 
