@@ -13,14 +13,21 @@ var linter = function (file, cb) {
   cache.has(file, function(err, isCached, hash) {
     if (err) return cb(err);
 
-    if (isCached) return cb();
+    if (isCached) {
+      if (stdout) {
+        cache.get(hash, function (err, cached) {
+          process.stdout.write(cached.contents);
+        });
+      }
+      return cb();
+    }
 
     exec('php -l '+file, {silent: ! stdout}, function (code, output) {
       var err = (code === 0) ? null : output.trim();
 
       if (err) return cb(err);
 
-      cache.put(hash, cb);
+      cache.put(hash, output, cb);
     });
   });
 };

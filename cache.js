@@ -7,14 +7,20 @@ var swap = new cacheSwap({
   cacheDirName: 'node-phplint'
 });
 
-var SWAP_CATEGORY = 'linted';
+var SWAP_CATEGORY = 'node/phplint';
 
 module.exports = {
 
-  put: function (hash, cb) {
-    swap.addCached(SWAP_CATEGORY, hash, '', function (err) {
+  put: function (hash, content, cb) {
+    swap.addCached(SWAP_CATEGORY, hash, content, function (err) {
       if (err) return cb(err);
       cb();
+    });
+  },
+
+  get: function (hash, cb) {
+    swap.getCached(SWAP_CATEGORY, hash, function (err, cached) {
+      cb(err, cached);
     });
   },
 

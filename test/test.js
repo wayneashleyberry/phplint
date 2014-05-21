@@ -20,7 +20,7 @@ it('should call the fail method', function (cb) {
 });
 
 it('should call the then method', function (cb) {
-  var lint = phplint('test/pass.php');
+  var lint = phplint('test/pass.php', {stdout: true});
   lint.then(function (msg) {
     cb();
   });
