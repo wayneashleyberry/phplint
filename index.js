@@ -49,11 +49,15 @@ var processPatterns = function (patterns) {
   return result;
 };
 
-module.exports = function (patterns) {
+module.exports = function (patterns, options) {
   var deferred = q.defer();
   var result = processPatterns(patterns);
 
-  async.eachLimit(result, 10, linter, function (err) {
+  options = options || {};
+
+  var limit = options.limit ? options.limit : 10;
+
+  async.eachLimit(result, limit, linter, function (err) {
     if (err) return deferred.reject(new Error(err.trim()));
 
     deferred.resolve(result.length + ' file(s) were linted.');

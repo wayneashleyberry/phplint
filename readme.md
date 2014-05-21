@@ -41,6 +41,20 @@ gulp.task('phplint', function () {
 gulp.task('default', ['phplint']);
 ```
 
+## Options
+
+### limit
+
+Sets the process spawn limit, defaults to 10.
+
+```js
+var phplint = require('phplint');
+
+phplint('src/*.php', {
+  limit: 2
+});
+```
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT) © [Wayne Ashley Berry](https://twitter.com/waynethebrain)
