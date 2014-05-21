@@ -16,15 +16,15 @@ var swap = new cacheSwap({
   cacheDirName: 'node-phplint'
 });
 
-var checkCached = function(filePath, done) {
+var checkCached = function(filePath, cb) {
   fs.readFile(filePath, function(err, contents) {
-    if (err) return done(err);
+    if (err) return cb(err);
 
     var sha1 = crypto.createHash("sha1"),
     fileHash = sha1.update(contents.toString()).digest("hex");
 
     swap.hasCached(SWAP_CATEGORY, fileHash, function(isCached, cachedPath) {
-      done(null, isCached, fileHash);
+      cb(null, isCached, fileHash);
     });
   });
 };
