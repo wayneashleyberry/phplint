@@ -15,7 +15,9 @@ $ npm install --save-dev phplint
 ```js
 var phplint = require('phplint');
 
-phplint('src/app/**/*.php');
+phplint('src/app/**/*.php', function (err) {
+  if (err) throw new Error(err);
+});
 ```
 
 ## License
