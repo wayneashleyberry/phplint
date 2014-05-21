@@ -55,6 +55,18 @@ phplint('src/*.php', {
 });
 ```
 
+### stdout
+
+Prints to stdout, defaults to false. Useful for debugging.
+
+```js
+var phplint = require('phplint');
+
+phplint('src/*.php', {
+  stdout: true
+});
+```
+
 ## License
 
 [MIT](http://opensource.org/licenses/MIT) © [Wayne Ashley Berry](https://twitter.com/waynethebrain)

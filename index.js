@@ -7,13 +7,15 @@ var shell = require('shelljs/global');
 var async = require('async');
 var cache = require('./cache');
 
+var stdout = false;
+
 var linter = function (file, cb) {
   cache.has(file, function(err, isCached, hash) {
     if (err) return cb(err);
 
     if (isCached) return cb();
 
-    exec('php -l '+file, {silent: true}, function (code, output) {
+    exec('php -l '+file, {silent: ! stdout}, function (code, output) {
       var err = (code === 0) ? null : output.trim();
 
       if (err) return cb(err);
@@ -56,6 +58,7 @@ module.exports = function (patterns, options) {
   options = options || {};
 
   var limit = options.limit ? options.limit : 10;
+  stdout = options.stdout ? options.stdout : false;
 
   async.eachLimit(result, limit, linter, function (err) {
     if (err) return deferred.reject(new Error(err.trim()));
