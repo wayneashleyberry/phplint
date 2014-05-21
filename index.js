@@ -7,6 +7,7 @@ var async = require('async');
 var cacheSwap = require('cache-swap');
 var crypto = require('crypto');
 var shell = require('shelljs/global');
+var q = require('q');
 
 var SWAP_CATEGORY = "linted";
 
@@ -31,8 +32,6 @@ var checkCached = function(filePath, done) {
 var linter = function (file, cb) {
   checkCached(file, function(err, isCached, hash) {
     if (err) return cb(err);
-
-    process.stdout.write('.');
 
     if (isCached) return cb();
 
@@ -76,12 +75,15 @@ var processPatterns = function (patterns) {
   return result;
 };
 
-module.exports = function (patterns, cb) {
+module.exports = function (patterns) {
+  var deferred = q.defer();
   var result = processPatterns(patterns);
 
   async.eachLimit(result, 10, linter, function (err) {
-    if (err) return cb(err);
+    if (err) return deferred.reject(new Error(err.trim()));
 
-    cb();
+    deferred.resolve(result.length + ' file(s) were linted.');
   });
+
+  return deferred.promise;
 };

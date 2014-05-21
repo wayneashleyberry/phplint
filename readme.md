@@ -15,8 +15,14 @@ $ npm install --save-dev phplint
 ```js
 var phplint = require('phplint');
 
-phplint('src/app/**/*.php', function (err) {
-  if (err) throw new Error(err);
+var lint = phplint('src/app/**/*.php');
+
+lint.then(function (msg) {
+  console.log(msg);
+});
+
+lint.fail(function (err) {
+  console.error(err);
 });
 ```
 
