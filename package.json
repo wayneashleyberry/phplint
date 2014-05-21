@@ -9,8 +9,8 @@
     "url": "https://github.com/wayneashleyberry"
   },
   "repository": {
-    "type" : "git",
-    "url" : "git@github.com:wayneashleyberry/node-phplint.git"
+    "type": "git",
+    "url": "git@github.com:wayneashleyberry/node-phplint.git"
   },
   "license": "MIT",
   "engines": {
@@ -31,5 +31,8 @@
     "lodash": "^2.4.1",
     "shelljs": "^0.3.0",
     "q": "^1.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.19.0"
   }
 }
