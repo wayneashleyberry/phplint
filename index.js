@@ -1,13 +1,11 @@
-'use strict';
-
 var q = require('q');
 var async = require('async');
 var linter = require('./lib/linter');
-var processPatterns = require('./lib/process');
+var process = require('./lib/process');
 
 module.exports = function (patterns, options) {
   var deferred = q.defer();
-  var result = processPatterns(patterns);
+  var result = process(patterns);
 
   options = options || {};
 
