@@ -1,4 +1,4 @@
-# phplint
+[![NPM](https://nodei.co/npm/phplint.png?downloads=true&stars=true)](https://nodei.co/npm/phplint/)
 
 [![Build Status](https://travis-ci.org/wayneashleyberry/node-phplint.svg)](https://travis-ci.org/wayneashleyberry/node-phplint)
 [![Dependency Status](https://david-dm.org/wayneashleyberry/node-phplint/status.png?theme=shields.io)](https://david-dm.org/wayneashleyberry/node-phplint#info=dependencies)
