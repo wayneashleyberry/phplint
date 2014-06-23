@@ -25,7 +25,9 @@
   "keywords": [
     "php",
     "phplint",
-    "lint"
+    "lint",
+    "gulpplugin",
+    "gulpfriendly"
   ],
   "dependencies": {
     "async": "^0.9.0",
