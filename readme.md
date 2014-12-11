@@ -1,8 +1,8 @@
 [![NPM](https://nodei.co/npm/phplint.png?downloads=true&stars=true)](https://nodei.co/npm/phplint/)
 
-[![Build Status](https://travis-ci.org/wayneashleyberry/node-phplint.svg)](https://travis-ci.org/wayneashleyberry/node-phplint)
-[![Dependency Status](https://david-dm.org/wayneashleyberry/node-phplint/status.png?theme=shields.io)](https://david-dm.org/wayneashleyberry/node-phplint#info=dependencies)
-[![devDependency Status](https://david-dm.org/wayneashleyberry/node-phplint/dev-status.png?theme=shields.io)](https://david-dm.org/wayneashleyberry/node-phplint#info=devDependencies)
+[![Build Status](https://img.shields.io/travis/wayneashleyberry/node-phplint/master.svg?style=flat)](https://travis-ci.org/wayneashleyberry/node-phplint)
+[![Dependency Status](https://david-dm.org/wayneashleyberry/node-phplint/status.svg?style=flat)](https://david-dm.org/wayneashleyberry/node-phplint#info=dependencies)
+[![devDependency Status](https://david-dm.org/wayneashleyberry/node-phplint/dev-status.svg?style=flat)](https://david-dm.org/wayneashleyberry/node-phplint#info=devDependencies)
 
 Inspired by and largely copied from [jgable/grunt-phplint](https://github.com/jgable/grunt-phplint) but in a build-tool agnostic manner.
 
