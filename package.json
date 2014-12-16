@@ -2,7 +2,7 @@
   "name": "phplint",
   "version": "0.2.0",
   "description": "run php -l in parallel",
-  "main": "cli.js",
+  "main": "main.js",
   "author": {
     "name": "Wayne Ashley Berry",
     "email": "wayneashleyberry@gmail.com",
