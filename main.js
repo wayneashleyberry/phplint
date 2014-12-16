@@ -1,5 +1,13 @@
 var globby = require('globby');
 var async = require('async');
+var exec = require('child_process').exec;
+
+function lint (path, callback) {
+  var child = exec('php -l '+path, {
+    cwd: process.cwd(),
+    env: process.env
+  }, callback);
+};
 
 module.exports = {
 
@@ -9,13 +17,7 @@ module.exports = {
     globby(files, function (err, paths) {
       async.eachLimit(paths, options.limit, function (item, cb) {
         // run on each file
-        var child = exec('php -l '+item, {
-          cwd: process.cwd(),
-          env: process.env
-        }, function (err, stdout, stderr) {
-          // done on a single file
-          cb(err);
-        })
+        lint(item, cb);
       }, function (err, stdout, stderr) {
         // all files are done or there was an error
         callback(err, stdout, stderr);
@@ -38,14 +40,10 @@ module.exports = {
 
       async.eachLimit(this.filesSrc, options.limit, function (item, callback) {
         // run on each file
-        var child = exec('php -l '+item, {
-          cwd: process.cwd(),
-          env: process.env
-        }, function (err, stdout, stderr) {
-          // done on a single file
+        lint(item, function (err, stdout, stderr) {
           if (err) failed++;
           callback(err);
-        })
+        });
       }, function (err, stdout, stderr) {
         // all files are done or there was an error
         if (options.stdout) process.stdout.write(stdout);
