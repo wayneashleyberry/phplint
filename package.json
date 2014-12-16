@@ -1,6 +1,6 @@
 {
   "name": "phplint",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "run php -l in parallel",
   "main": "main.js",
   "author": {
