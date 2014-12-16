@@ -77,7 +77,10 @@ var phplint = require('phplint').lint;
 
 gulp.task('phplint', function(cb) {
   phplint(['src/**/*.php'], {limit: 10}, function (err, stdout, stderr) {
-    if (err) cb(err);
+    if (err) {
+      cb(err);
+      process.exit(1);
+    }
     cb();
   });
 });
