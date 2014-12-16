@@ -11,11 +11,7 @@ if (args.length === 0) {
 }
 
 exec('php -v', function(err, stdout, stderr) {
-  if (err) {
-    throw new Error(err);
-  }
-
-  console.log(stdout);
+  if (err) throw new Error(err);
 });
 
 globby(args, function (err, paths) {

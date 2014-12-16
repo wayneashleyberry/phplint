@@ -2,6 +2,10 @@ var globby = require('globby');
 var async = require('async');
 var exec = require('child_process').exec;
 
+exec('php -v', function(err, stdout, stderr) {
+  if (err) throw new Error(err);
+});
+
 function lint (path, callback) {
   return exec('php -l '+path, {
     cwd: process.cwd(),
@@ -12,6 +16,7 @@ function lint (path, callback) {
 module.exports = {
 
   lint: function (files, options, callback) {
+
     if (typeof options.limit === 'undefined') options.limit = 10;
 
     globby(files, function (err, paths) {
