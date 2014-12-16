@@ -36,19 +36,16 @@ module.exports = {
         limit: 10
       });
 
-      var failed = 0;
-
       async.eachLimit(this.filesSrc, options.limit, function (item, callback) {
         // run on each file
         lint(item, function (err, stdout, stderr) {
-          if (err) failed++;
+          if (options.stdout) process.stdout.write(stdout);
+          if (options.stderr) process.stderr.write(stderr);
           callback(err);
         });
       }, function (err, stdout, stderr) {
         // all files are done or there was an error
-        if (options.stdout) process.stdout.write(stdout);
-        if (options.stderr) process.stderr.write(stderr);
-        done(failed);
+        done(err);
       });
     });
   }
