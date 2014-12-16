@@ -30,7 +30,7 @@ lint(['src/**/*.php'], function (err, stdout, stderr) {
 ```json
 {
   "scripts": {
-    "pretest": "phplint src/**/*.php"
+    "pretest": "phplint 'src/**/*.php'"
   },
   "devDependencies": {
     "phplint": "~1.0.0"
