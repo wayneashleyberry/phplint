@@ -45,23 +45,34 @@ $ npm test
 ## Grunt
 
 ```js
-require('phplint').gruntPlugin(grunt);
+module.exports = function(grunt) {
 
-grunt.initConfig({
-  phplint: {
-    options: {
-      limit: 10,
-      stdout: true,
-      stderr: true
-    },
-    files: 'src/**/*.php'
-  }
-});
+  require('phplint').gruntPlugin(grunt);
+
+  grunt.initConfig({
+    phplint: {
+      options: {
+        limit: 10,
+        stdout: true,
+        stderr: true
+      },
+      files: 'src/**/*.php'
+    }
+  });
+
+  grunt.registerTask('test', ['phplint']);
+
+};
+```
+
+```sh
+$ grunt test
 ```
 
 ## Gulp
 
 ```js
+var gulp = require('gulp');
 var phplint = require('phplint').lint;
 
 gulp.task('phplint', function(cb) {
@@ -70,6 +81,12 @@ gulp.task('phplint', function(cb) {
     cb();
   });
 });
+
+gulp.task('test', ['phplint']);
+```
+
+```sh
+$ gulp test
 ```
 
 ## License
