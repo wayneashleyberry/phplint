@@ -10,13 +10,16 @@ $ npm install --global phplint
 $ phplint **/*.php
 ```
 
-## Node
+## Vanilla Node
 
 ```js
 var phplint = require('phplint').lint;
 
 lint(['src/**/*.php'], function (err, stdout, stderr) {
   if (err) throw new Error(err);
+
+  process.stdout.write(stdout);
+  process.stderr.write(stderr);
 
   // success!
 });
@@ -46,6 +49,11 @@ require('phplint').gruntPlugin(grunt);
 
 grunt.initConfig({
   phplint: {
+    options: {
+      limit: 10,
+      stdout: true,
+      stderr: true
+    },
     files: 'src/**/*.php'
   }
 });
@@ -57,7 +65,7 @@ grunt.initConfig({
 var phplint = require('phplint').lint;
 
 gulp.task('phplint', function(cb) {
-  phplint([], function (err, stdout, stderr) {
+  phplint(['src/**/*.php'], {limit: 10}, function (err, stdout, stderr) {
     if (err) cb(err);
     cb();
   });
