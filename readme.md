@@ -1,70 +1,95 @@
 [![NPM](https://nodei.co/npm/phplint.png?downloads=true&stars=true)](https://nodei.co/npm/phplint/)
 
-[![Build Status](https://img.shields.io/travis/wayneashleyberry/node-phplint/master.svg?style=flat)](https://travis-ci.org/wayneashleyberry/node-phplint)
 [![Dependency Status](https://david-dm.org/wayneashleyberry/node-phplint/status.svg?style=flat)](https://david-dm.org/wayneashleyberry/node-phplint#info=dependencies)
 [![devDependency Status](https://david-dm.org/wayneashleyberry/node-phplint/dev-status.svg?style=flat)](https://david-dm.org/wayneashleyberry/node-phplint#info=devDependencies)
 
-Inspired by and largely copied from [jgable/grunt-phplint](https://github.com/jgable/grunt-phplint) but in a build-tool agnostic manner.
-
-## Install
+## Command Line
 
 ```sh
-$ npm install --save-dev phplint
+$ npm install --global phplint
+$ phplint **/*.php
 ```
 
-## Usage
+## Vanilla Node
 
 ```js
-var phplint = require('phplint');
+var phplint = require('phplint').lint;
 
-var lint = phplint('src/app/**/*.php');
+lint(['src/**/*.php'], function (err, stdout, stderr) {
+  if (err) throw new Error(err);
 
-lint.then(function (msg) {
-  console.log(msg);
-});
+  process.stdout.write(stdout);
+  process.stderr.write(stderr);
 
-lint.fail(function (err) {
-  console.error(err);
+  // success!
 });
 ```
 
-### Gulp
+### NPM
+
+```json
+{
+  "scripts": {
+    "pretest": "phplint src/**/*.php"
+  },
+  "devDependencies": {
+    "phplint": "~2.0.0"
+  }
+}
+```
+
+```sh
+$ npm test
+```
+
+## Grunt
+
+```js
+module.exports = function(grunt) {
+
+  require('phplint').gruntPlugin(grunt);
+
+  grunt.initConfig({
+    phplint: {
+      options: {
+        limit: 10,
+        stdout: true,
+        stderr: true
+      },
+      files: 'src/**/*.php'
+    }
+  });
+
+  grunt.registerTask('test', ['phplint']);
+
+};
+```
+
+```sh
+$ grunt test
+```
+
+## Gulp
 
 ```js
 var gulp = require('gulp');
-var phplint = require('phplint');
+var phplint = require('phplint').lint;
 
-gulp.task('phplint', function () {
-  return phplint('src/app/**/*.php');
+gulp.task('phplint', function(cb) {
+  phplint(['src/**/*.php'], {limit: 10}, function (err, stdout, stderr) {
+    if (err) {
+      cb(err);
+      process.exit(1);
+    }
+    cb();
+  });
 });
 
-gulp.task('default', ['phplint']);
+gulp.task('test', ['phplint']);
 ```
 
-## Options
-
-### limit
-
-Sets the process spawn limit, defaults to 10.
-
-```js
-var phplint = require('phplint');
-
-phplint('src/*.php', {
-  limit: 2
-});
-```
-
-### stdout
-
-Prints to stdout, defaults to false. Useful for debugging.
-
-```js
-var phplint = require('phplint');
-
-phplint('src/*.php', {
-  stdout: true
-});
+```sh
+$ gulp test
 ```
 
 ## License

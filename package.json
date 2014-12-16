@@ -1,8 +1,8 @@
 {
   "name": "phplint",
   "version": "0.2.0",
-  "description": "wrapper for php -l",
-  "main": "index.js",
+  "description": "run php -l in parallel",
+  "main": "main.js",
   "author": {
     "name": "Wayne Ashley Berry",
     "email": "wayneashleyberry@gmail.com",
@@ -20,24 +20,25 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "jshint *.js"
+  },
+  "bin": {
+    "phplint": "./cli.js"
   },
   "keywords": [
     "php",
-    "phplint",
     "lint",
+    "phplint",
     "gulpplugin",
-    "gulpfriendly"
+    "gulpfriendly",
+    "gruntplugin",
+    "gruntfriendly"
   ],
   "dependencies": {
     "async": "^0.9.0",
-    "cache-swap": "^0.1.0",
-    "glob": "^4.0.0",
-    "lodash": "^2.4.1",
-    "q": "^1.0.1",
-    "shelljs": "^0.3.0"
+    "globby": "^1.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.0.1"
+    "jshint": "^2.5.10"
   }
 }
