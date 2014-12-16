@@ -7,7 +7,7 @@ function lint (path, callback) {
     cwd: process.cwd(),
     env: process.env
   }, callback);
-};
+}
 
 module.exports = {
 
