@@ -3,7 +3,7 @@ var async = require('async');
 var exec = require('child_process').exec;
 
 function lint (path, callback) {
-  var child = exec('php -l '+path, {
+  return exec('php -l '+path, {
     cwd: process.cwd(),
     env: process.env
   }, callback);
