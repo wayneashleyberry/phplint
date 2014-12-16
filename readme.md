@@ -10,7 +10,7 @@ $ npm install --global phplint
 $ phplint **/*.php
 ```
 
-## Vanilla Node
+## Node
 
 ```js
 var phplint = require('phplint').lint;
@@ -33,7 +33,7 @@ lint(['src/**/*.php'], function (err, stdout, stderr) {
     "pretest": "phplint src/**/*.php"
   },
   "devDependencies": {
-    "phplint": "~2.0.0"
+    "phplint": "~1.0.0"
   }
 }
 ```
