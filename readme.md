@@ -4,14 +4,22 @@
 [![Dependency Status](https://david-dm.org/wayneashleyberry/node-phplint/status.svg?style=flat)](https://david-dm.org/wayneashleyberry/node-phplint#info=dependencies)
 [![devDependency Status](https://david-dm.org/wayneashleyberry/node-phplint/dev-status.svg?style=flat)](https://david-dm.org/wayneashleyberry/node-phplint#info=devDependencies)
 
-## CLI
+## PHPLint
+
+A simple node wrapper to run `php -l` in parallel.
+
+Running `find . -type f -name "*.php" | xargs -n 1 php -l` in a brand new
+Laravel project (with dependencies) took 1m 32s to find its first error. Running `phplint
+'**/*.php'` in the same project took 37s to find the same error.
+
+### CLI
 
 ```sh
 $ npm install --global phplint
 $ phplint **/*.php
 ```
 
-## Node
+### Node
 
 ```js
 var phplint = require('phplint').lint;
@@ -43,7 +51,7 @@ lint(['src/**/*.php'], function (err, stdout, stderr) {
 $ npm test
 ```
 
-## Grunt
+### Grunt
 
 ```js
 module.exports = function(grunt) {
@@ -70,7 +78,7 @@ module.exports = function(grunt) {
 $ grunt test
 ```
 
-## Gulp
+### Gulp
 
 ```js
 var gulp = require('gulp');
@@ -93,6 +101,6 @@ gulp.task('test', ['phplint']);
 $ gulp test
 ```
 
-## License
+#### License
 
 [MIT](http://opensource.org/licenses/MIT) © [Wayne Ashley Berry](https://twitter.com/waynethebrain)
