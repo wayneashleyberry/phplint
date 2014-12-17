@@ -4,19 +4,25 @@
 [![Dependency Status](https://david-dm.org/wayneashleyberry/node-phplint/status.svg?style=flat)](https://david-dm.org/wayneashleyberry/node-phplint#info=dependencies)
 [![devDependency Status](https://david-dm.org/wayneashleyberry/node-phplint/dev-status.svg?style=flat)](https://david-dm.org/wayneashleyberry/node-phplint#info=devDependencies)
 
-## Node PHPLint
+## node-phplint
 
 A simple node wrapper to run `php -l` in parallel.
 
 Running `find . -type f -name "*.php" | xargs -n 1 php -l` in a brand new
-Laravel project (with dependencies) took 1m 32s to find its first error. Running `phplint
-'**/*.php'` in the same project took 37s to find the same error.
+Laravel project (with dependencies) took _1m 32s_ to find its first error. Running `phplint
+'**/*.php'` in the same project took _37s_ to find the same error.
 
 ### CLI
 
 ```sh
 $ npm install --global phplint
-$ phplint **/*.php
+$ phplint '**/*.php'
+```
+
+node-phplint uses [globby](https://github.com/sindresorhus/globby) for globbing filenames, so the following would work as well:
+
+```sh
+$ phplint '**/*.php' '!vendor/**'
 ```
 
 ### Node
