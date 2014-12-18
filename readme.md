@@ -69,6 +69,7 @@ module.exports = function(grunt) {
     phplint: {
       options: {
         limit: 10,
+        phpCmd: '/home/scripts/php', // Defaults to php
         stdout: true,
         stderr: true
       },
