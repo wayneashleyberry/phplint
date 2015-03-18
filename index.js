@@ -8,6 +8,7 @@ var fs = require('fs');
 var CacheSwap = require('cache-swap');
 var SWAP_CATEGORY = 'linted';
 var CACHE_DIR = 'php-lint';
+var CACHE_TMP_DIR = os.tmpdir();
 
 function testPhp () {
   exec(phpCmd + ' -v', function(err, stdout, stderr) {
@@ -100,7 +101,8 @@ module.exports = {
       callback = options;
       options = {
         useCache: true,
-        cacheDirName: CACHE_DIR
+        cacheDirName: CACHE_DIR,
+        tmpDir: CACHE_TMP_DIR
       };
     }
 
@@ -118,13 +120,14 @@ module.exports = {
     });
   },
 
-  clearCache: function(cacheDirName, callback) {
+  clearCache: function(cacheDirName, tmpDir, callback) {
     if (typeof cacheDirName === 'function') {
       callback = cacheDirName;
       cacheDirName = CACHE_DIR;
+      tmpDir = CACHE_TMP_DIR;
     }
 
-    var cache = new CacheSwap({cacheDirName: cacheDirName, tmpDir: options.tmpDir});
+    var cache = new CacheSwap({cacheDirName: cacheDirName, tmpDir: tmpDir});
     cache.clear(null, callback);
   },
 
@@ -141,7 +144,7 @@ module.exports = {
         limit: 10,
         useCache: true,
         cacheDirName: CACHE_DIR,
-        tmpDir: os.tmpdir()
+        tmpDir: CACHE_TMP_DIR
       });
 
       iterate(this.filesSrc, options, done);
