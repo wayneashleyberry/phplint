@@ -141,7 +141,7 @@ module.exports = {
         limit: 10,
         useCache: true,
         cacheDirName: CACHE_DIR,
-		tmpDir: os.tmpdir()
+        tmpDir: os.tmpdir()
       });
 
       iterate(this.filesSrc, options, done);
