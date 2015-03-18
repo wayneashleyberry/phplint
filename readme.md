@@ -59,6 +59,12 @@ $ npm test
 
 ### Grunt
 
+#### Configure cache directories
+
+This module uses the `cache-swap` module to cache already linted files.
+You can configure the cache directories via the `cacheDirName` and the `tmpDir` options.
+Both options will be passed to the CacheSwap instance when created.
+
 ```js
 module.exports = function(grunt) {
 
@@ -70,7 +76,9 @@ module.exports = function(grunt) {
         limit: 10,
         phpCmd: '/home/scripts/php', // Defaults to php
         stdout: true,
-        stderr: true
+        stderr: true,
+        tmpDir: '/custom/root/folder', // Defaults to os.tmpDir()
+        cacheDirName: 'custom/subfolder' // Defaults to php-lint
       },
       files: 'src/**/*.php'
     }
