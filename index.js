@@ -25,6 +25,7 @@ function lint (path, callback) {
 
 function iterate (filePaths, options, callback) {
   var swap = null
+
   if (options.useCache) {
     swap = new CacheSwap({cacheDirName: options.cacheDirName, tmpDir: options.tmpDir})
   }
@@ -97,8 +98,6 @@ module.exports = {
   },
 
   lint: function (files, options, callback) {
-    var swap = null
-
     if (typeof options === 'function') {
       callback = options
       options = {
@@ -112,10 +111,6 @@ module.exports = {
     if (options.phpCmd) phpCmd = options.phpCmd
 
     testPhp()
-
-    if (options.useCache) {
-      swap = new CacheSwap({cacheDirName: options.cacheDirName, tmpDir: options.tmpDir})
-    }
 
     globby(files, function (err, paths) {
       if (err) {
