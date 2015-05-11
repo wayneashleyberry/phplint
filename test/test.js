@@ -48,8 +48,8 @@ describe('PHP-lint', function () {
     })
 
     it('should return an error if no args are passed', function (done) {
-      function requireCli() {
-        var cli = require('../cli')
+      function requireCli () {
+        require('../cli')
       }
 
       requireCli.should.throw(Error)
