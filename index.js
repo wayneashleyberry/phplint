@@ -118,6 +118,10 @@ module.exports = {
     }
 
     globby(files, function (err, paths) {
+      if (err) {
+        console.log(err)
+        process.exit(-1)
+      }
       iterate(paths, options, callback)
     })
   },
