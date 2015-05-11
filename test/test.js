@@ -9,7 +9,7 @@ var cli = wrapper.cli
 var goodFilePath = __dirname + '/good.php'
 var badFilePath = __dirname + '/bad.php'
 
-var should = chai.should()
+chai.should()
 
 describe('PHP-lint', function () {
   after(function (done) {
