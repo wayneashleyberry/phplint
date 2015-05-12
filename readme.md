@@ -28,16 +28,16 @@ $ phplint '**/*.php' '!vendor/**'
 ### Node
 
 ```js
-var phplint = require('phplint').lint;
+var phplint = require('phplint').lint
 
 lint(['src/**/*.php'], function (err, stdout, stderr) {
-  if (err) throw new Error(err);
+  if (err) throw new Error(err)
 
-  process.stdout.write(stdout);
-  process.stderr.write(stderr);
+  process.stdout.write(stdout)
+  process.stderr.write(stderr)
 
   // success!
-});
+})
 ```
 
 ### NPM
@@ -66,9 +66,8 @@ You can configure the cache directories via the `cacheDirName` and the `tmpDir` 
 Both options will be passed to the CacheSwap instance when created.
 
 ```js
-module.exports = function(grunt) {
-
-  require('phplint').gruntPlugin(grunt);
+module.exports = function (grunt) {
+  require('phplint').gruntPlugin(grunt)
 
   grunt.initConfig({
     phplint: {
@@ -82,11 +81,11 @@ module.exports = function(grunt) {
       },
       files: 'src/**/*.php'
     }
-  });
+  })
 
-  grunt.registerTask('test', ['phplint']);
+  grunt.registerTask('test', ['phplint'])
 
-};
+}
 ```
 
 ```sh
@@ -96,20 +95,20 @@ $ grunt test
 ### Gulp
 
 ```js
-var gulp = require('gulp');
-var phplint = require('phplint').lint;
+var gulp = require('gulp')
+var phplint = require('phplint').lint
 
-gulp.task('phplint', function(cb) {
+gulp.task('phplint', function (cb) {
   phplint(['src/**/*.php'], {limit: 10}, function (err, stdout, stderr) {
     if (err) {
-      cb(err);
-      process.exit(1);
+      cb(err)
+      process.exit(1)
     }
-    cb();
-  });
-});
+    cb()
+  })
+})
 
-gulp.task('test', ['phplint']);
+gulp.task('test', ['phplint'])
 ```
 
 ```sh
