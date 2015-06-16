@@ -30,7 +30,7 @@ $ phplint '**/*.php' '!vendor/**'
 ```js
 var phplint = require('phplint').lint
 
-lint(['src/**/*.php'], function (err, stdout, stderr) {
+phplint(['src/**/*.php'], function (err, stdout, stderr) {
   if (err) throw new Error(err)
 
   process.stdout.write(stdout)
