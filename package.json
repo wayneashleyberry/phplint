@@ -1,7 +1,7 @@
 {
   "name": "phplint",
   "version": "1.5.1",
-  "description": "run php -l in parallel",
+  "description": "phplint is a wrapper around the native php linter that allows for parallel linting and integration with build systems like Grunt, Gulp and more!",
   "main": "index.js",
   "author": {
     "name": "Wayne Ashley Berry",
