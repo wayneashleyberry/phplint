@@ -1,25 +1,25 @@
-## node-phplint
+## phplint
+
+> phplint is a node wrapper around the native php linter that allows for
+> parallel linting and integration with build systems like
+> [Grunt](http://gruntjs.com/), [Gulp](http://gulpjs.com/) and more.
 
 [![npm](http://img.shields.io/npm/v/phplint.svg?style=flat)](https://www.npmjs.com/package/phplint)
-[![Build Status](https://travis-ci.org/wayneashleyberry/node-phplint.svg?branch=master)](https://travis-ci.org/wayneashleyberry/node-phplint)
+[![Build Status](https://travis-ci.org/wayneashleyberry/phplint.svg?branch=master)](https://travis-ci.org/wayneashleyberry/phplint)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
-[![Dependency Status](https://david-dm.org/wayneashleyberry/node-phplint/status.svg?style=flat)](https://david-dm.org/wayneashleyberry/node-phplint#info=dependencies)
-[![devDependency Status](https://david-dm.org/wayneashleyberry/node-phplint/dev-status.svg?style=flat)](https://david-dm.org/wayneashleyberry/node-phplint#info=devDependencies)
+[![Dependency Status](https://david-dm.org/wayneashleyberry/phplint/status.svg?style=flat)](https://david-dm.org/wayneashleyberry/phplint#info=dependencies)
+[![devDependency Status](https://david-dm.org/wayneashleyberry/phplint/dev-status.svg?style=flat)](https://david-dm.org/wayneashleyberry/phplint#info=devDependencies)
 
-A simple node wrapper to run `php -l` in parallel.
-
-Running `find . -type f -name "*.php" | xargs -n 1 php -l` in a brand new
-Laravel project (with dependencies) took _1m 32s_ to find its first error. Running `phplint
-'**/*.php'` in the same project took _37s_ to find the same error.
+## Usage
 
 ### CLI
 
 ```sh
-$ npm install --global phplint
+$ npm i -g phplint
 $ phplint '**/*.php'
 ```
 
-node-phplint uses [globby](https://github.com/sindresorhus/globby) for globbing filenames, so the following would work as well:
+phplint uses [globby](https://github.com/sindresorhus/globby) for globbing filenames, so the following would work as well:
 
 ```sh
 $ phplint '**/*.php' '!vendor/**'

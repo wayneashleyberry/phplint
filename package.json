@@ -9,11 +9,11 @@
     "url": "https://github.com/wayneashleyberry"
   },
   "bugs": {
-    "url": "https://github.com/wayneashleyberry/node-phplint/issues"
+    "url": "https://github.com/wayneashleyberry/phplint/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:wayneashleyberry/node-phplint.git"
+    "url": "git@github.com:wayneashleyberry/phplint.git"
   },
   "license": "MIT",
   "engines": {
