@@ -19,7 +19,9 @@ $ npm i -g phplint
 $ phplint '**/*.php'
 ```
 
-phplint uses [globby](https://github.com/sindresorhus/globby) for globbing filenames, so the following would work as well:
+Paths and filenames are parsed using
+[globby](https://github.com/sindresorhus/globby), so the following would work
+as well:
 
 ```sh
 $ phplint '**/*.php' '!vendor/**'
