@@ -1,6 +1,8 @@
-## node-phplint
+## phplint
 
-> A node wrapper around the native php linter that allows for parallel linting.
+> phplint is a node wrapper around the native php linter that allows for
+> parallel linting and integration with build systems like
+> [Grunt](http://gruntjs.com/), [Gulp](http://gulpjs.com/) and more.
 
 [![npm](http://img.shields.io/npm/v/phplint.svg?style=flat)](https://www.npmjs.com/package/phplint)
 [![Build Status](https://travis-ci.org/wayneashleyberry/node-phplint.svg?branch=master)](https://travis-ci.org/wayneashleyberry/node-phplint)
