@@ -1,6 +1,6 @@
 var globby = require('globby')
 var async = require('async')
-var exec = require('child_process').exec
+var execFile = require('child_process').execFile
 var phpCmd = 'php'
 var os = require('os')
 var crypto = require('crypto')
@@ -11,13 +11,13 @@ var CACHE_DIR = 'php-lint'
 var CACHE_TMP_DIR = os.tmpdir()
 
 function testPhp () {
-  exec(phpCmd + ' -v', function (err, stdout, stderr) {
+  execFile(phpCmd, ['-v'], function (err, stdout, stderr) {
     if (err) throw new Error(err)
   })
 }
 
 function lint (path, callback) {
-  return exec(phpCmd + ' -l ' + path, {
+  return execFile(phpCmd, ['-l', path], {
     cwd: process.cwd(),
     env: process.env
   }, callback)
