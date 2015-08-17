@@ -47,16 +47,6 @@ describe('PHP-lint', function () {
       done()
     })
 
-    it('should return an error if no args are passed', function (done) {
-      function requireCli () {
-        require('../cli')
-      }
-
-      requireCli.should.throw(Error)
-
-      done()
-    })
-
     it('should throw an error on bad php files', function (done) {
       cli([badFilePath], function (err) {
         (err !== undefined).should.be.true
