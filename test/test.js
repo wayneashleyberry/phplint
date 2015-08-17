@@ -3,6 +3,7 @@
 
 var chai = require('chai')
 var wrapper = require('../')
+var binCheck = require('bin-check')
 var lint = wrapper.lint
 var cli = wrapper.cli
 
@@ -45,6 +46,14 @@ describe('PHP-lint', function () {
       process.argv = initialArgs
 
       done()
+    })
+
+    it('should be exectuable', function (done) {
+      binCheck(__dirname + '/../cli.js', function (err, works) {
+        (err === null).should.equal(true)
+        works.should.equal(true)
+        done()
+      })
     })
 
     it('should throw an error on bad php files', function (done) {
