@@ -78,6 +78,7 @@ module.exports = function (grunt) {
         phpCmd: '/home/scripts/php', // Defaults to php
         stdout: true,
         stderr: true,
+        useCache: true, // Defaults to false
         tmpDir: '/custom/root/folder', // Defaults to os.tmpDir()
         cacheDirName: 'custom/subfolder' // Defaults to php-lint
       },
@@ -95,6 +96,8 @@ $ grunt test
 ```
 
 ### Gulp
+
+The same options that can be used in Grunt can be used in Gulp too.
 
 ```js
 var gulp = require('gulp')
