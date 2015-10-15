@@ -34,7 +34,16 @@ function iterate (filePaths, options, callback) {
     // If no cache then just lint
     if (!swap) {
       return lint(filePath, function (err, stdout, stderr) {
-        if (options.stdout) process.stdout.write(stdout)
+        if (options.stdout) {
+          if (options.suppress) {
+            if (stdout.substr(0, 28) !== 'No syntax errors detected in') {
+              process.stdout.write(stdout)
+            }
+          } else {
+            process.stdout.write(stdout)
+          }
+        }
+
         if (options.stderr) process.stderr.write(stderr)
 
         next(err)
@@ -69,7 +78,6 @@ function iterate (filePaths, options, callback) {
         })
       })
     })
-
   }, function (err, stdout, stderr) {
     // all files are done or there was an error
     callback(err)
@@ -77,14 +85,13 @@ function iterate (filePaths, options, callback) {
 }
 
 module.exports = {
-  cli: function (pathsArgs, cb) {
-    globby(pathsArgs, function (err, paths) {
-      if (err) throw new Error(err)
-
+  cli: function (pathsArgs, opt, cb) {
+    globby(pathsArgs).then(function (paths) {
       var options = {
         stdout: true,
         stderr: true,
-        limit: 10
+        limit: 10,
+        suppress: opt.suppress
       }
 
       var callback = function (err) {
@@ -112,11 +119,7 @@ module.exports = {
 
     testPhp()
 
-    globby(files, function (err, paths) {
-      if (err) {
-        console.log(err)
-        process.exit(-1)
-      }
+    globby(files).then(function (paths) {
       iterate(paths, options, callback)
     })
   },
@@ -151,5 +154,4 @@ module.exports = {
       iterate(this.filesSrc, options, done)
     })
   }
-
 }

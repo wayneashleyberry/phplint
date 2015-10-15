@@ -49,15 +49,15 @@ describe('PHP-lint', function () {
     })
 
     it('should be exectuable', function (done) {
-      binCheck(__dirname + '/../cli.js', function (err, works) {
-        (err === null).should.equal(true)
+      binCheck(__dirname + '/../cli.js').then(function (works) {
+        console.log('bin-check', works)
         works.should.equal(true)
         done()
       })
     })
 
     it('should throw an error on bad php files', function (done) {
-      cli([badFilePath], function (err) {
+      cli([badFilePath], {}, function (err) {
         (err !== undefined).should.be.true
 
         done()
@@ -65,7 +65,7 @@ describe('PHP-lint', function () {
     })
 
     it('should not throw an error on good php files', function (done) {
-      cli([goodFilePath], function () {
+      cli([goodFilePath], {}, function () {
         done()
       })
     })

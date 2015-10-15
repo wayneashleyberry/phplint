@@ -4,7 +4,8 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y php5 php5-cli
 node_js:
-  - "iojs"
+  - "4.1"
+  - "4.0"
   - "0.12"
   - "0.11"
   - '0.10'
