@@ -69,7 +69,6 @@ function iterate (filePaths, options, callback) {
         })
       })
     })
-
   }, function (err, stdout, stderr) {
     // all files are done or there was an error
     callback(err)
