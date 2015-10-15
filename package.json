@@ -1,6 +1,6 @@
 {
   "name": "phplint",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "description": "phplint is a wrapper around the native php linter that allows for parallel linting and integration with build systems like Grunt, Gulp and more!",
   "main": "index.js",
   "author": {
