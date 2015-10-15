@@ -57,7 +57,7 @@ describe('PHP-lint', function () {
     })
 
     it('should throw an error on bad php files', function (done) {
-      cli([badFilePath], function (err) {
+      cli([badFilePath], {}, function (err) {
         (err !== undefined).should.be.true
 
         done()
@@ -65,7 +65,7 @@ describe('PHP-lint', function () {
     })
 
     it('should not throw an error on good php files', function (done) {
-      cli([goodFilePath], function () {
+      cli([goodFilePath], {}, function () {
         done()
       })
     })
