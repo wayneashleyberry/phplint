@@ -49,8 +49,8 @@ describe('PHP-lint', function () {
     })
 
     it('should be exectuable', function (done) {
-      binCheck(__dirname + '/../cli.js', function (err, works) {
-        (err === null).should.equal(true)
+      binCheck(__dirname + '/../cli.js').then(function (works) {
+        console.log('bin-check', works)
         works.should.equal(true)
         done()
       })
