@@ -7,7 +7,7 @@ var cli = require('./').cli
 if (args.length === 0 || (args.length === 1 && args[0] === 'help')) {
   console.log([
     '',
-    '  Usage: phplint [paths]',
+    '  Usage: phplint [path]',
     '',
     '  Examples:',
     '  phplint "app/**/*.php"',
