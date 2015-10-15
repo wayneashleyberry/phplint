@@ -77,9 +77,7 @@ function iterate (filePaths, options, callback) {
 
 module.exports = {
   cli: function (pathsArgs, cb) {
-    globby(pathsArgs, function (err, paths) {
-      if (err) throw new Error(err)
-
+    globby(pathsArgs).then(function (paths) {
       var options = {
         stdout: true,
         stderr: true,
@@ -111,11 +109,7 @@ module.exports = {
 
     testPhp()
 
-    globby(files, function (err, paths) {
-      if (err) {
-        console.log(err)
-        process.exit(-1)
-      }
+    globby(files).then(function (paths) {
       iterate(paths, options, callback)
     })
   },
@@ -150,5 +144,4 @@ module.exports = {
       iterate(this.filesSrc, options, done)
     })
   }
-
 }
