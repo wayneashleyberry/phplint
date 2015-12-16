@@ -17,7 +17,7 @@ function testPhp () {
 }
 
 function lint (path, callback) {
-  return execFile(phpCmd, ['-l', path], {
+  return execFile(phpCmd, ['-d', 'display_errors=1', '-l', path], {
     cwd: process.cwd(),
     env: process.env
   }, callback)
