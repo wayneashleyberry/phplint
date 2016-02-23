@@ -7,9 +7,9 @@
 [![npm](http://img.shields.io/npm/v/phplint.svg?style=flat)](https://www.npmjs.com/package/phplint)
 [![Build Status](https://travis-ci.org/wayneashleyberry/phplint.svg?branch=master)](https://travis-ci.org/wayneashleyberry/phplint)
 
-## Usage
+### Usage
 
-### CLI
+#### CLI
 
 ```sh
 $ npm i -g phplint
@@ -24,7 +24,7 @@ as well:
 $ phplint '**/*.php' '!vendor/**'
 ```
 
-### Node
+#### Node
 
 ```js
 var phplint = require('phplint').lint
@@ -39,7 +39,7 @@ phplint(['src/**/*.php'], function (err, stdout, stderr) {
 })
 ```
 
-### NPM
+#### NPM
 
 ```json
 {
@@ -56,9 +56,9 @@ phplint(['src/**/*.php'], function (err, stdout, stderr) {
 $ npm test
 ```
 
-### Grunt
+#### Grunt
 
-#### Configure cache directories
+##### Configure cache directories
 
 This module uses the `cache-swap` module to cache already linted files.
 You can configure the cache directories via the `cacheDirName` and the `tmpDir` options.
@@ -92,7 +92,7 @@ module.exports = function (grunt) {
 $ grunt test
 ```
 
-### Gulp
+#### Gulp
 
 The same options that can be used in Grunt can be used in Gulp too.
 
@@ -117,6 +117,10 @@ gulp.task('test', ['phplint'])
 $ gulp test
 ```
 
-#### License
+### Related
+
+- [phpl](https://github.com/wayneashleyberry/phpl)
+
+### License
 
 [MIT](http://opensource.org/licenses/MIT) © [Wayne Ashley Berry](https://twitter.com/waynethebrain)
