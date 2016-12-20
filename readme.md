@@ -123,4 +123,4 @@ $ gulp test
 
 ### License
 
-[MIT](http://opensource.org/licenses/MIT) © [Wayne Ashley Berry](https://twitter.com/waynethebrain)
+[MIT](http://opensource.org/licenses/MIT) © [Wayne Ashley Berry](https://wayne.cloud)
