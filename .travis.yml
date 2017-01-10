@@ -1,5 +1,5 @@
 language: node_js
 before_install:
-  - apt-get install php5-common libapache2-mod-php5 php5-cli
+  - sudo apt-get install php5-common libapache2-mod-php5 php5-cli
 node_js:
   - "node"
