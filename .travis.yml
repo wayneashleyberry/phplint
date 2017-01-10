@@ -1,5 +1,7 @@
 language: php
 env:
+  - TRAVIS_NODE_VERSION="4"
+  - TRAVIS_NODE_VERSION="6"
   - TRAVIS_NODE_VERSION="node"
 php:
   - "5.6"
