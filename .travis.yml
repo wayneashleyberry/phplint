@@ -1,9 +1,5 @@
 language: node_js
 before_install:
-  - sudo add-apt-repository -y ppa:ondrej/php5
-  - sudo apt-get update -qq
-  - sudo apt-get install -y php5 php5-cli
+  - apt-get install php5-common libapache2-mod-php5 php5-cli
 node_js:
-  - "4"
-  - "6"
   - "latest"
