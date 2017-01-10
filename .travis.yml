@@ -1,5 +1,7 @@
-language: node_js
-before_install:
-  - sudo apt-get install php5-common libapache2-mod-php5 php5-cli
-node_js:
-  - "node"
+language: php
+env:
+  - TRAVIS_NODE_VERSION="node"
+php:
+  - "5.6"
+  - "7.0"
+  - "7.1"
