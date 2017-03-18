@@ -139,17 +139,20 @@ module.exports = {
     grunt.task.registerMultiTask('phplint', 'Lint PHP files in parallel.', function () {
       var done = this.async()
 
-      testPhp()
-
       // Merge task-specific and/or target-specific options with these defaults.
       var options = this.options({
         stdout: true,
         stderr: true,
         limit: 10,
         useCache: true,
+        phpCmd: 'php',
         cacheDirName: CACHE_DIR,
         tmpDir: CACHE_TMP_DIR
       })
+
+      if (options.phpCmd) phpCmd = options.phpCmd
+
+      testPhp()
 
       iterate(this.filesSrc, options, done)
     })
