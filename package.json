@@ -36,7 +36,7 @@
   ],
   "dependencies": {
     "async": "^1.4.2",
-    "cache-swap": "^0.2.3",
+    "cache-swap": "^0.3.0",
     "globby": "^3.0.1"
   },
   "devDependencies": {
