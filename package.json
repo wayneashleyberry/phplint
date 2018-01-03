@@ -20,7 +20,7 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "test": "standard && mocha ./test/test.js"
+    "test": "mocha ./test/test.js"
   },
   "bin": {
     "phplint": "./cli.js"
@@ -43,7 +43,6 @@
     "bin-check": "^3.0.0",
     "chai": "^3.3.0",
     "mocha": "^2.3.3",
-    "prettier": "^1.9.2",
-    "standard": "^5.3.1"
+    "prettier": "^1.9.2"
   }
 }
