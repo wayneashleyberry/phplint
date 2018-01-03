@@ -6,6 +6,7 @@
 
 [![npm](http://img.shields.io/npm/v/phplint.svg?style=flat)](https://www.npmjs.com/package/phplint)
 [![Build Status](https://travis-ci.org/wayneashleyberry/phplint.svg?branch=master)](https://travis-ci.org/wayneashleyberry/phplint)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 ### Usage
 
@@ -27,16 +28,16 @@ $ phplint '**/*.php' '!vendor/**'
 #### Node
 
 ```js
-var phplint = require('phplint').lint
+var phplint = require("phplint").lint;
 
-phplint(['src/**/*.php'], function (err, stdout, stderr) {
-  if (err) throw new Error(err)
+phplint(["src/**/*.php"], function(err, stdout, stderr) {
+  if (err) throw new Error(err);
 
-  process.stdout.write(stdout)
-  process.stderr.write(stderr)
+  process.stdout.write(stdout);
+  process.stderr.write(stderr);
 
   // success!
-})
+});
 ```
 
 #### NPM
@@ -65,27 +66,26 @@ You can configure the cache directories via the `cacheDirName` and the `tmpDir` 
 Both options will be passed to the CacheSwap instance when created.
 
 ```js
-module.exports = function (grunt) {
-  require('phplint').gruntPlugin(grunt)
+module.exports = function(grunt) {
+  require("phplint").gruntPlugin(grunt);
 
   grunt.initConfig({
     phplint: {
       options: {
         limit: 10,
-        phpCmd: '/home/scripts/php', // Defaults to php
+        phpCmd: "/home/scripts/php", // Defaults to php
         stdout: true,
         stderr: true,
         useCache: true, // Defaults to false
-        tmpDir: '/custom/root/folder', // Defaults to os.tmpDir()
-        cacheDirName: 'custom/subfolder' // Defaults to php-lint
+        tmpDir: "/custom/root/folder", // Defaults to os.tmpDir()
+        cacheDirName: "custom/subfolder" // Defaults to php-lint
       },
-      files: 'src/**/*.php'
+      files: "src/**/*.php"
     }
-  })
+  });
 
-  grunt.registerTask('test', ['phplint'])
-
-}
+  grunt.registerTask("test", ["phplint"]);
+};
 ```
 
 ```sh
@@ -97,20 +97,20 @@ $ grunt test
 The same options that can be used in Grunt can be used in Gulp too.
 
 ```js
-var gulp = require('gulp')
-var phplint = require('phplint').lint
+var gulp = require("gulp");
+var phplint = require("phplint").lint;
 
-gulp.task('phplint', function (cb) {
-  phplint(['src/**/*.php'], {limit: 10}, function (err, stdout, stderr) {
+gulp.task("phplint", function(cb) {
+  phplint(["src/**/*.php"], { limit: 10 }, function(err, stdout, stderr) {
     if (err) {
-      cb(err)
-      process.exit(1)
+      cb(err);
+      process.exit(1);
     }
-    cb()
-  })
-})
+    cb();
+  });
+});
 
-gulp.task('test', ['phplint'])
+gulp.task("test", ["phplint"]);
 ```
 
 ```sh
@@ -119,7 +119,7 @@ $ gulp test
 
 ### Related
 
-- [phpl](https://github.com/wayneashleyberry/phpl)
+* [phpl](https://github.com/wayneashleyberry/phpl)
 
 ### License
 
