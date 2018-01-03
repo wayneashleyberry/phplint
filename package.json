@@ -35,14 +35,14 @@
     "gruntfriendly"
   ],
   "dependencies": {
-    "async": "^1.4.2",
+    "async": "^2.6.0",
     "cache-swap": "^0.3.0",
-    "globby": "^3.0.1"
+    "globby": "^7.1.1"
   },
   "devDependencies": {
-    "bin-check": "^3.0.0",
-    "chai": "^3.3.0",
-    "mocha": "^2.3.3",
+    "bin-check": "^4.1.0",
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0",
     "prettier": "^1.9.2"
   }
 }
