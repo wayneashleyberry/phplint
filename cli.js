@@ -14,7 +14,7 @@ if (args.length === 0 || (args.length === 1 && args[0] === "help")) {
       "  Examples:",
       '  phplint "app/**/*.php"',
       '  phplint "**/*.php" "!vendor/**"',
-      ""
+      "",
     ].join("\n")
   );
 }
@@ -29,7 +29,7 @@ if (args.indexOf("-s") !== -1 || args.indexOf("--suppress") !== -1) {
   suppress = true;
 }
 
-exec("php -v", function(err, stdout, stderr) {
+exec("php -v", function (err, stdout, stderr) {
   if (err) throw new Error(err);
 });
 

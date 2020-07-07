@@ -11,7 +11,7 @@ var CACHE_DIR = "php-lint";
 var CACHE_TMP_DIR = os.tmpdir();
 
 function testPhp() {
-  execFile(phpCmd, ["-v"], function(err, stdout, stderr) {
+  execFile(phpCmd, ["-v"], function (err, stdout, stderr) {
     if (err) throw new Error(err);
   });
 }
@@ -22,7 +22,7 @@ function lint(path, callback) {
     ["-d", "display_errors=1", "-l", path],
     {
       cwd: process.cwd(),
-      env: process.env
+      env: process.env,
     },
     callback
   );
@@ -34,17 +34,17 @@ function iterate(filePaths, options, callback) {
   if (options.useCache) {
     swap = new CacheSwap({
       cacheDirName: options.cacheDirName,
-      tmpDir: options.tmpDir
+      tmpDir: options.tmpDir,
     });
   }
 
   async.eachLimit(
     filePaths,
     options.limit,
-    function(filePath, next) {
+    function (filePath, next) {
       // If no cache then just lint
       if (!swap) {
-        return lint(filePath, function(err, stdout, stderr) {
+        return lint(filePath, function (err, stdout, stderr) {
           if (options.stdout) {
             if (options.suppress) {
               if (stdout.substr(0, 28) !== "No syntax errors detected in") {
@@ -62,24 +62,24 @@ function iterate(filePaths, options, callback) {
       }
 
       // Cache-enabled only code path
-      var readFile = function(next) {
+      var readFile = function (next) {
         fs.readFile(filePath, next);
       };
 
-      var sha1File = function(fileContent, next) {
+      var sha1File = function (fileContent, next) {
         var sha1 = crypto.createHash("sha1");
         var fileSha1 = sha1.update(fileContent.toString()).digest("hex");
 
         return next(null, fileSha1);
       };
 
-      async.waterfall([readFile, sha1File], function(err, sha1) {
+      async.waterfall([readFile, sha1File], function (err, sha1) {
         if (err) return next(err);
 
-        swap.hasCached(SWAP_CATEGORY, sha1, function(isCached) {
+        swap.hasCached(SWAP_CATEGORY, sha1, function (isCached) {
           if (isCached) return next();
 
-          lint(filePath, function(err, stdout, stderr) {
+          lint(filePath, function (err, stdout, stderr) {
             if (options.stdout) process.stdout.write(stdout);
             if (options.stderr) process.stderr.write(stderr);
 
@@ -90,7 +90,7 @@ function iterate(filePaths, options, callback) {
         });
       });
     },
-    function(err, stdout, stderr) {
+    function (err, stdout, stderr) {
       // all files are done or there was an error
       callback(err);
     }
@@ -98,16 +98,16 @@ function iterate(filePaths, options, callback) {
 }
 
 module.exports = {
-  cli: function(pathsArgs, opt, cb) {
-    globby(pathsArgs).then(function(paths) {
+  cli: function (pathsArgs, opt, cb) {
+    globby(pathsArgs).then(function (paths) {
       var options = {
         stdout: true,
         stderr: true,
         limit: 10,
-        suppress: opt.suppress
+        suppress: opt.suppress,
       };
 
-      var callback = function(err) {
+      var callback = function (err) {
         if (cb) return cb(err);
 
         if (err) throw new Error(err);
@@ -117,13 +117,13 @@ module.exports = {
     });
   },
 
-  lint: function(files, options, callback) {
+  lint: function (files, options, callback) {
     if (typeof options === "function") {
       callback = options;
       options = {
         useCache: true,
         cacheDirName: CACHE_DIR,
-        tmpDir: CACHE_TMP_DIR
+        tmpDir: CACHE_TMP_DIR,
       };
     }
 
@@ -132,12 +132,12 @@ module.exports = {
 
     testPhp();
 
-    globby(files).then(function(paths) {
+    globby(files).then(function (paths) {
       iterate(paths, options, callback);
     });
   },
 
-  clearCache: function(cacheDirName, tmpDir, callback) {
+  clearCache: function (cacheDirName, tmpDir, callback) {
     if (typeof cacheDirName === "function") {
       callback = cacheDirName;
       cacheDirName = CACHE_DIR;
@@ -148,11 +148,11 @@ module.exports = {
     cache.clear(null, callback);
   },
 
-  gruntPlugin: function(grunt) {
+  gruntPlugin: function (grunt) {
     grunt.task.registerMultiTask(
       "phplint",
       "Lint PHP files in parallel.",
-      function() {
+      function () {
         var done = this.async();
 
         // Merge task-specific and/or target-specific options with these defaults.
@@ -163,7 +163,7 @@ module.exports = {
           useCache: true,
           phpCmd: "php",
           cacheDirName: CACHE_DIR,
-          tmpDir: CACHE_TMP_DIR
+          tmpDir: CACHE_TMP_DIR,
         });
 
         if (options.phpCmd) phpCmd = options.phpCmd;
@@ -173,5 +173,5 @@ module.exports = {
         iterate(this.filesSrc, options, done);
       }
     );
-  }
+  },
 };

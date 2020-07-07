@@ -4,7 +4,6 @@
 > parallel linting and integration with build systems like
 > [Grunt](http://gruntjs.com/), [Gulp](http://gulpjs.com/) and more.
 
-<a href="https://enjoy.gitstore.app/repositories/wayneashleyberry/phplint"><img src="https://enjoy.gitstore.app/repositories/badge-wayneashleyberry/phplint.svg"></a>
 [![Build Status](https://travis-ci.org/wayneashleyberry/phplint.svg?branch=master)](https://travis-ci.org/wayneashleyberry/phplint)
 [![npm](http://img.shields.io/npm/v/phplint.svg?style=flat)](https://www.npmjs.com/package/phplint)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
@@ -31,7 +30,7 @@ $ phplint '**/*.php' '!vendor/**'
 ```js
 var phplint = require("phplint").lint;
 
-phplint(["src/**/*.php"], function(err, stdout, stderr) {
+phplint(["src/**/*.php"], function (err, stdout, stderr) {
   if (err) throw new Error(err);
 
   process.stdout.write(stdout);
@@ -67,7 +66,7 @@ You can configure the cache directories via the `cacheDirName` and the `tmpDir` 
 Both options will be passed to the CacheSwap instance when created.
 
 ```js
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   require("phplint").gruntPlugin(grunt);
 
   grunt.initConfig({
@@ -79,10 +78,10 @@ module.exports = function(grunt) {
         stderr: true,
         useCache: true, // Defaults to false
         tmpDir: "/custom/root/folder", // Defaults to os.tmpDir()
-        cacheDirName: "custom/subfolder" // Defaults to php-lint
+        cacheDirName: "custom/subfolder", // Defaults to php-lint
       },
-      files: "src/**/*.php"
-    }
+      files: "src/**/*.php",
+    },
   });
 
   grunt.registerTask("test", ["phplint"]);
@@ -101,8 +100,8 @@ The same options that can be used in Grunt can be used in Gulp too.
 var gulp = require("gulp");
 var phplint = require("phplint").lint;
 
-gulp.task("phplint", function(cb) {
-  phplint(["src/**/*.php"], { limit: 10 }, function(err, stdout, stderr) {
+gulp.task("phplint", function (cb) {
+  phplint(["src/**/*.php"], { limit: 10 }, function (err, stdout, stderr) {
     if (err) {
       cb(err);
       process.exit(1);
