@@ -4,7 +4,7 @@
 > parallel linting and integration with build systems like
 > [Grunt](http://gruntjs.com/), [Gulp](http://gulpjs.com/) and more.
 
-[![Build Status](https://travis-ci.org/wayneashleyberry/phplint.svg?branch=master)](https://travis-ci.org/wayneashleyberry/phplint)
+[![Build Status](https://travis-ci.org/wayneashleyberry/phplint.svg?branch=main)](https://travis-ci.org/wayneashleyberry/phplint)
 [![npm](http://img.shields.io/npm/v/phplint.svg?style=flat)](https://www.npmjs.com/package/phplint)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
