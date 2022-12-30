@@ -43,7 +43,7 @@
   "devDependencies": {
     "bin-check": "^4.1.0",
     "chai": "^4.1.2",
-    "mocha": "^7.2.0",
+    "mocha": "^10.2.0",
     "prettier": "^2.0.5"
   }
 }
